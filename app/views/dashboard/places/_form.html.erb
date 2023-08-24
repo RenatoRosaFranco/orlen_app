@@ -1,0 +1,36 @@
+<%= form_for(place) do |f| %>
+  
+  <div class="field">
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name, class: 'form-control', required: 'required',
+    placeholder: 'Digite o nome', autocomplete: 'off' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :latitude, 'Latitude' %>
+    <%= f.text_field :latitude, class: 'form-control', required: 'required',
+    placeholder: 'Digite a latitude', autocomplete: 'off' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :longitude, 'Longitude' %>
+    <%= f.string :longitude, class: 'form-control', required: 'required',
+    placeholder: 'Digite a longitude', autocomplete: 'off' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description, 'Descrição' %>
+    <%= f.text_area :description, class:' form-control', required: 'required',
+    placeholder: 'Digite a descrição', autocomplete: 'off' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :place_type_id, 'Tipo de Local' %>
+    <%= f.collection_select(:place_type_id, PlaceType.all, :id, :name,
+    { include_blank: 'Selecionar' }, { class: 'form-control' }) %>
+  </div>
+
+  <div class="actions"><br />
+    <%= f.submit nil, class: 'btn btn-primary btn-lg' %>
+  </div>
+<% end %>

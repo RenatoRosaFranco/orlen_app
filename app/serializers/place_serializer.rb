@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: places
@@ -27,18 +25,15 @@
 #  fk_rails_...  (place_type_id => place_types.id)
 #  fk_rails_...  (user_id => users.id)
 #
-FactoryBot.define do
-  factory :place do
-    name { FFaker::Address.city }
-    latitude { FFaker::Geolocation.lat }
-    longitude { FFaker::Geolocation.lng }
-    description { FFaker::Lorem.paragraphs(rand(8..12)).join }
+class PlaceSerializer < ActiveModel::Serializer
+  attributes :id, :name, :latitude, :longitude, :description, 
+             :ucode, :slug, :place, :user
 
-    place_type
-    user
+  def place
+    object.place&.name
+  end
 
-    trait :with_video do
-      video_path { FFaker::Youtube.url }
-    end
+  def user
+    object.user&.name
   end
 end

@@ -1,0 +1,12 @@
+<%= form_for(place_type) do |f| %>
+  
+  <div class="field">
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name, class: 'form-control', required: 'required',
+    placeholder: 'Digite o nome', autocomplete: 'off' %>
+  </div>
+
+  <div class="actions"><br />
+    <%= f.submit nil, class: 'btn btn-primary btn-lg' %>
+  </div>
+<% end %>

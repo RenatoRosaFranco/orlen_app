@@ -5,10 +5,13 @@
 # Table name: places
 #
 #  id            :bigint           not null, primary key
+#  description   :text
 #  latitude      :float
 #  longitude     :float
 #  name          :string
 #  slug          :string
+#  ucode         :string
+#  video_path    :string
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  place_type_id :bigint
