@@ -23,6 +23,7 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
+  host: <%= ENV.fetch('DBHOST') %>
   database: <%= ENV.fetch('DBNAME') %>
   pool: 5
   username: <%= ENV.fetch('DBUSER') %>
