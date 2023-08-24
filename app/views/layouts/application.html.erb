@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
   <head>
-    <title>OrlenApp</title>
+    <title>ORLEN | <%= yield :title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
-  <body>
-    <%= yield %>
+  <body class="<%= controller.controller_name %>">
+    <%= render partial: 'layouts/header' %>
+      <%= yield %>
+    <%= render partial: 'layouts/footer' %>
   </body>
 </html>
