@@ -41,13 +41,15 @@ module Dashboard
 
     def destroy
       @place.destroy
-      head :no_content
+
+      flash[:notice] = 'Local removido com sucesso.'
+      redirect_to dashboard_places_path
     end
 
     private
 
     def set_place
-      @place = Place.find(params[:id])
+      @place = Place.friendly.find(params[:id])
     end
 
     def place_params

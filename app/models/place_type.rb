@@ -18,6 +18,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class PlaceType < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: [:slugged]
 
   # Properties
   self.table_name  = 'place_types'

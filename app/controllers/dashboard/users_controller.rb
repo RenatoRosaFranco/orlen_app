@@ -39,7 +39,9 @@ module Dashboard
 
     def destroy
       @user.destroy
-      head :no_content
+
+      flash[:notice] = 'Usuario removido com sucesso.'
+      redirect_to dashboard_users_path
     end
 
     private

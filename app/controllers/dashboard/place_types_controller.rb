@@ -11,7 +11,7 @@ module Dashboard
     end
 
     def new
-      @place_type = Place.new
+      @place_type = PlaceType.new
     end
 
     def create
@@ -19,7 +19,7 @@ module Dashboard
 
       if place_type.save
         flash[:notice] = 'Tipo de Local criado com sucesso.'
-        redirec_to dashboard_place_type_path(place_type)
+        redirect_to dashboard_place_type_path(place_type)
       else
         render :new
       end
@@ -29,7 +29,7 @@ module Dashboard
     end
 
     def update
-      if @place_type(place_type_params)
+      if @place_type.update(place_type_params)
         flash[:notice] = 'Tipo de Local atualizado com sucesso.'
         redirec_to dashboard_place_type_path(place_type)
       else
@@ -39,13 +39,15 @@ module Dashboard
 
     def destroy
       @place_type.destroy
-      head :no_content
+
+      flash[:notice] = 'Usuario removido com sucesso.'
+      redirect_to dashboard_place_types_path
     end
 
     private
 
     def set_place_type
-      @place_type = PlaceType.find(params[:id])
+      @place_type = PlaceType.friendly.find(params[:id])
     end
 
     def place_type_params

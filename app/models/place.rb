@@ -28,6 +28,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Place < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: [:slugged]
 
   # Properties
   self.table_name  = 'places'
@@ -36,4 +38,12 @@ class Place < ApplicationRecord
   # Relationships
   belongs_to :place_type
   belongs_to :user
+
+  # Callbacks
+  before_create :set_ucode
+
+  # Methods
+  def set_ucode
+    self.ucode = SecureRandom.urlsafe_base64(12)
+  end
 end

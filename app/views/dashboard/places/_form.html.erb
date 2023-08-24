@@ -1,4 +1,6 @@
-<%= form_for(place) do |f| %>
+<%= place.errors.full_messages %>
+
+<%= form_for([:dashboard, place]) do |f| %>
   
   <div class="field">
     <%= f.label :name, 'Nome' %>
@@ -14,7 +16,7 @@
 
   <div class="field">
     <%= f.label :longitude, 'Longitude' %>
-    <%= f.string :longitude, class: 'form-control', required: 'required',
+    <%= f.text_field :longitude, class: 'form-control', required: 'required',
     placeholder: 'Digite a longitude', autocomplete: 'off' %>
   </div>
 
