@@ -25,5 +25,5 @@ production:
   encoding: unicode
   database: <%= ENV.fetch('DBNAME') %>
   pool: 5
-  username: <%= ENV.fecth('DBUSER') %>
+  username: <%= ENV.fetch('DBUSER') %>
   password: <%= ENV.fetch('DBPASS') %>
